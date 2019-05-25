@@ -19,7 +19,7 @@ module.exports = {
             entry: 'src/producer/main.js',
             template:"public/producer.html",
             filename:'producer.html',
-            titleL:'producer',
+            title:'producer',
             chunks: ['chunk-vendors', 'chunk-common', 'producer']
         }
     }
