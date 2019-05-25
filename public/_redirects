@@ -1,2 +1,6 @@
 /producer   /producer   200
+/rankhime   https://rankhime.dovahkiin.top/ 200
 /*    /index.html   200
+
+# Redirect default Netlify subdomain to primary domain
+https://dovahkiin-home.netlify.com/*    https://dovahkiin.top/:splat 301!
