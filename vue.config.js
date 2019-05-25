@@ -1,4 +1,5 @@
 module.exports = {
+    productionSourceMap:false,
     pages:{
         index: {
             // page 的入口

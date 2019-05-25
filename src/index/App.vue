@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-      index       
+      index     
+      <a @click="$router.push('/producer')">1111</a>
+      <a href="/producer">2222</a>
       <router-view/>
   </div>
 </template>
