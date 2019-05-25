@@ -1,4 +1,5 @@
 # home
+[![Netlify Status](https://api.netlify.com/api/v1/badges/64de3b7e-9ef4-4de2-bdb9-c1b57c44ac73/deploy-status)](https://app.netlify.com/sites/dovahkiin-home/deploys)
 
 ## Project setup
 ```
@@ -13,16 +14,6 @@ yarn run serve
 ### Compiles and minifies for production
 ```
 yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
 ```
 
 ### Customize configuration
