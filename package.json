@@ -11,6 +11,8 @@
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "element-ui": "^2.8.2",
+    "firebase": "^6.0.4",
+    "firebaseui": "^4.0.0",
     "vue": "^2.6.10",
     "vue-clipboard2": "^0.3.0",
     "vue-router": "^3.0.3"
