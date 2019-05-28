@@ -32,24 +32,22 @@
         </p>
       </div>
     </div>
-    <div class="imas mocho" @click="mocho">終わりだよ( o・▽・ o)</div>
+    <div class="imas mocho" @click.stop="mocho">{{mochoing?"そうしんちゅう～～":"終わりだよ( o・▽・ o)"}}</div>
   </div>
 </template>
 <script>
-
+import http from "@/utils/axios";
 export default {
-  data() {
-    return {
-     
-    };
-  },
-  computed:{
-    links:()=>{
-      return require('./links.json').links
+  data:()=>({
+    mochoing:false
+  }),
+  computed: {
+    links: () => {
+      return require("./links.json").links;
     },
-    message(){
-      const word = require('./kotoba.json').kotoba
-      return word[Math.floor(Math.random() * word.length)]
+    message() {
+      const word = require("./kotoba.json").kotoba;
+      return word[Math.floor(Math.random() * word.length)];
     }
   },
   methods: {
@@ -80,31 +78,44 @@ export default {
       );
     },
     mocho() {
-      this.$notify({
-        title: "もちょだよ(●・▽・●)",
-        message: ['😘','😊','😀','😄','🤗'][Math.floor(Math.random() * 6)],
-        position: "bottom-right",
-        offset: 66
-      });
+      if (this.mochoing)return;
+      this.mochoing=true
+      http("./mocho").then(e => {
+        this.$notify({
+          title: "もちょだよ(●・▽・●)",
+          message: e.data,
+          position: "bottom-right",
+          offset: 66
+        })
+        this.mochoing = false
+      }).catch(err=>{
+        this.$notify({
+          title: "もちょだよ(●・▽・●)",
+          message: err,
+          position: "bottom-right",
+          offset: 66
+        })
+        this.mochoing = false
+      })
     }
   }
 };
 </script>
 <style>
 * {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 a {
-    text-decoration-line: none;
-    color: #755575;
+  text-decoration-line: none;
+  color: #755575;
 }
 #welcome {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #755575;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #755575;
   position: absolute;
   overflow-x: hidden;
   overflow-y: auto;

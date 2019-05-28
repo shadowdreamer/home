@@ -1,4 +1,14 @@
 module.exports = {
+    devServer: {
+        proxy: {
+          '/mocho': {
+            target: 'http://mocho.pocka.info/oneline',
+            ws: true,
+            changeOrigin: true,
+            pathRewrite: {'^/mocho' : ''}
+            }
+        }
+    },
     productionSourceMap:false,
     pages:{
         index: {
@@ -22,5 +32,5 @@ module.exports = {
             title:'producer',
             chunks: ['chunk-vendors', 'chunk-common', 'producer']
         }
-    }
+    }    
 }
