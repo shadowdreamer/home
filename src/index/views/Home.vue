@@ -53,7 +53,7 @@ export default {
       auth
         .signOut()
         .then(() => {
-          this.auth = {}
+          this.user = {}
         })
         .catch(() => {});
     },
