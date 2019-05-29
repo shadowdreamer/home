@@ -52,7 +52,9 @@ export default {
     logout() {
       auth
         .signOut()
-        .then(() => {})
+        .then(() => {
+          this.auth = {}
+        })
         .catch(() => {});
     },
   },
