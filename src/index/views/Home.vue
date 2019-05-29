@@ -10,65 +10,54 @@
     <p>
       <a href="https://rankhime.dovahkiin.top/">rankhime.dovahkiin.top</a>
     </p>
-    <input type="text" v-model="email">
-    <input type="text" v-model="password">
-    <button @click="login">login</button>
+    <button @click="githubLogin">login with github</button>
     <button @click="logout">logout</button>
-    <button @click="getuser">get user</button>
-    <button @click="write">write</button>
+    <div>      
+      <p>{{message}}</p>
+      <img style="height:150px;" :src="user.photoURL"/>
+      <p>{{user.displayName}}</p>
+    </div>
   </div>
 </template>
 
 <script>
-import { firestore, auth } from "@/utils/firebase";
-import firebaseui from "firebaseui";
+import { auth, provider } from "@/utils/firebase";
 export default {
   name: "home",
   data: () => ({
-    password: "12345678",
-    email: "uzumaki@yeah.net"
+    message:'',
+    user:{}
   }),
+  computed:{
+     
+  },
   mounted() {
+    auth
+      .getRedirectResult()
+      .then(result=> {
+        console.log(result)
+        if (result.credential) {
+           this.message = 'login success'
+        }
+        if (result.user){
+          this.user = auth.currentUser
+        }
+      })
+      .catch(error=> { 
+        console.log(error)
+        this.message = error.message;
+      });
   },
   methods: {
-    login() {
-      auth
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(e => {
-          console.log(e);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+    githubLogin() {
+      auth.signInWithRedirect(provider);
     },
     logout() {
       auth
         .signOut()
-        .then(e => {
-          console.log(e);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+        .then(() => {})
+        .catch(() => {});
     },
-    getuser() {
-      var user = auth.currentUser;
-      console.log(user);
-    },
-    write() {
-      firestore.collection("users")
-        .add({
-          first: "Ada",
-          last: "Lovelace",
-          born: 1815
-        })
-        .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function(error) {
-          console.error("Error adding document: ", error);
-        });
-    }
   },
   components: {}
 };

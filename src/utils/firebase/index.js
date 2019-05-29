@@ -1,4 +1,6 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/auth'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBlooijYtuTLuQxHqE0UFFyEmlyUxnnyc0",
@@ -12,5 +14,6 @@ const firebaseConfig = {
 
   firebase.initializeApp(firebaseConfig);
 
-  export const firestore = firebase.firestore()
-  export const auth = firebase.auth()
+export const firestore = firebase.firestore()
+export const auth = firebase.auth()
+export const provider = new firebase.auth.GithubAuthProvider()
