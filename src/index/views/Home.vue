@@ -35,13 +35,10 @@ export default {
     auth
       .getRedirectResult()
       .then(result=> {
-        console.log(result)
         if (result.credential) {
-           this.message = 'login success'
+          this.message = 'login success'
         }
-        if (result.user){
           this.user = auth.currentUser
-        }
       })
       .catch(error=> { 
         console.log(error)
