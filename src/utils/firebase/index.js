@@ -16,4 +16,6 @@ const firebaseConfig = {
 
 export const firestore = firebase.firestore()
 export const auth = firebase.auth()
-export const provider = new firebase.auth.GithubAuthProvider()
+export const github = new firebase.auth.GithubAuthProvider()
+export const twitter = new firebase.auth.TwitterAuthProvider()
+export const google = new firebase.auth.GoogleAuthProvider()
