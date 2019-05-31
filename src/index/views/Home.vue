@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>welcome</h1>links:
     <p>
       <a href="/producer">producer page</a>
     </p>
@@ -10,23 +9,6 @@
     <p>
       <a href="https://rankhime.dovahkiin.top/">rankhime.dovahkiin.top</a>
     </p>
-    <div v-if="loading">loading.......</div>
-    <div v-else>
-      <div v-if="!gwf">
-        <button @click="githubLogin">login with github</button>&nbsp;
-        <button @click="twitterLogin">login with twitter</button>&nbsp;
-        <button @click="googleLogin">login with google</button>&nbsp;
-        <button @click="logout">logout</button>
-        <div>
-          <p v-show="userLoading">loading user info......</p>
-          <p v-show="nologin">you are not login,please login</p>
-          <p>{{message}}</p>
-          <img style="height:150px;" :src="user.photoURL">
-          <p>{{user.displayName}}</p>
-        </div>
-      </div>
-      <div v-else>请正确地连接到互联网</div>
-    </div>
   </div>
 </template>
 
@@ -41,7 +23,8 @@ export default {
     loading: true,
     userLoading: false,
     nologin: false,
-    gwf: false
+    gwf: false,
+    drawer: false
   }),
   computed: {},
   mounted() {
@@ -49,7 +32,7 @@ export default {
       .then(() => {
         this.loading = false;
         this.userLoading = true;
-        auth
+        auth()
           .getRedirectResult()
           .then(result => {
             if (result.credential) {
