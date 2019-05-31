@@ -10,18 +10,18 @@
     <p>
       <a href="https://rankhime.dovahkiin.top/">rankhime.dovahkiin.top</a>
     </p>
-    <div v-if="loading">loading....... </div>
+    <div v-if="loading">loading.......</div>
     <div v-else>
       <div v-if="!gwf">
         <button @click="githubLogin">login with github</button>&nbsp;
         <button @click="twitterLogin">login with twitter</button>&nbsp;
         <button @click="googleLogin">login with google</button>&nbsp;
         <button @click="logout">logout</button>
-        <div>      
+        <div>
           <p v-show="userLoading">loading user info......</p>
           <p v-show="nologin">you are not login,please login</p>
           <p>{{message}}</p>
-          <img style="height:150px;" :src="user.photoURL"/>
+          <img style="height:150px;" :src="user.photoURL">
           <p>{{user.displayName}}</p>
         </div>
       </div>
@@ -31,69 +31,66 @@
 </template>
 
 <script>
-import { auth, github ,twitter,google} from "@/utils/firebase";
-
+import { auth, github, twitter, google } from "@/utils/firebase";
+import GFWtest from "@/utils/GFWtest";
 export default {
   name: "home",
   data: () => ({
-    message:'',
-    user:{},
-    loading:true,
-    userLoading:false,
-    nologin:false,
-    gwf:false
+    message: "",
+    user: {},
+    loading: true,
+    userLoading: false,
+    nologin: false,
+    gwf: false
   }),
-  computed:{
-     
-  },
+  computed: {},
   mounted() {
-    const test = new Image()
-    test.src = 'https://www.google.com/images/logo.png'
-    test.onload = ()=>{
-      this.loading=false
-      this.userLoading = true
-      auth.getRedirectResult()
-        .then(result=> {
-          if (result.credential) {
-            this.message = 'login success'
-          }
-          if(auth.currentUser){
-            this.user = auth.currentUser
-            this.userLoading = false
+    new GFWtest()
+      .then(() => {
+        this.loading = false;
+        this.userLoading = true;
+        auth
+          .getRedirectResult()
+          .then(result => {
+            if (result.credential) {
+              this.message = "login success";
             }
-          else{
-            this.userLoading = false
-            this.nologin = true
-          }
-        })
-        .catch(error=> { 
-          this.message = error.message;
-        });
-    }
-    test.onerror = ()=>{
-      this.loading=false
-      this.gwf=true
-    }
+            if (auth.currentUser) {
+              this.user = auth.currentUser;
+              this.userLoading = false;
+            } else {
+              this.userLoading = false;
+              this.nologin = true;
+            }
+          })
+          .catch(error => {
+            this.message = error.message;
+          });
+      })
+      .catch(() => {
+        this.loading = false;
+        this.gwf = true;
+      });
   },
   methods: {
     githubLogin() {
       auth.signInWithRedirect(github);
     },
-    twitterLogin(){
+    twitterLogin() {
       auth.signInWithRedirect(twitter);
     },
-    googleLogin(){
+    googleLogin() {
       auth.signInWithRedirect(google);
     },
     logout() {
       auth
         .signOut()
         .then(() => {
-          this.user = {}
-          this.nologin = true
+          this.user = {};
+          this.nologin = true;
         })
         .catch(() => {});
-    },
+    }
   },
   components: {}
 };
