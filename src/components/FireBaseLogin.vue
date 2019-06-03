@@ -46,8 +46,12 @@ import { auth } from "@/utils/firebase";
 export default {
     name: "firebaselogin",
     data:()=>({
-       
     }),
+    computed:{
+      user(){
+        return auth().currentUser
+      }
+    },
     methods:{
         firebaselogin(type){
             let provider;
@@ -61,6 +65,9 @@ export default {
         firebaselogout(){
             auth.signOut()
         }
+    },
+    mounted(){
+
     }
 };
 </script>

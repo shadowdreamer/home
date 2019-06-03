@@ -59,31 +59,27 @@ export default {
     user: null
   }),
   mounted() {
-    new GFWtest()
-      .then(() => {
-        this.loading = false;
-        this.gfw = false;
-        this.user = auth().currentUser
-        // if (!this.user) {
-        //   auth().getRedirectResult()
-        //     .then(() => {
-        //       if (auth.currentUser) {
-        //         this.user = auth().currentUser;
-        //         this.userLoading = false;
-        //       } else {
-        //         this.userLoading = false;
-        //         this.nologin = true;
-        //       }
-        //     })
-        //     .catch(error => {
-        //       this.message = error.message;
-        //     });
-        // }
-      })
-      .catch(() => {
-        this.loading = false;
-        this.gfw = true;
-      });
+    window.onload = ()=>{
+      new GFWtest()
+        .then(() => {
+          this.loading = false;
+          this.gfw = false;
+          this.user = auth().currentUser
+          if (!this.user) {
+            auth().getRedirectResult()
+              .then(() => {
+                if (auth().currentUser) {
+                  this.user = auth().currentUser;
+                 
+                }
+              })
+          }
+        })
+        .catch(() => {
+          this.loading = false;
+          this.gfw = true;
+        });
+    }
   },
   components: {
     FireBaseLogin: () => import("@/components/FireBaseLogin")
