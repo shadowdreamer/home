@@ -1,0 +1,5 @@
+/mocho  http://mocho.pocka.info/oneline 200
+/*  /index.html 200
+
+# Redirect default Netlify subdomain to primary domain
+https://dovahkiin-home.netlify.com/*    https://dovahkiin.top/:splat 301!

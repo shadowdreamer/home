@@ -1,0 +1,40 @@
+{
+    "links": [
+        {
+            "src": "Weibo.png",
+            "alt":"weibo",
+            "href":"https://m.weibo.cn/profile/1771195675",
+            "des":"@Cure_Dovahkiin"
+        },
+        {
+            "src": "twitter.png",
+            "alt":"twitter",
+            "href":"https://twitter.com/q781178419",
+            "des":"@Cure_Dovahkiin"
+        },
+        {
+            "src": "steam.png",
+            "alt":"steam",
+            "href":"https://steamcommunity.com/id/shadowdreamer/",
+            "des":"Cure_Dovahkiin"
+        },
+        {
+            "src": "telegram.png",
+            "alt":"telegram",
+            "href":"https://t.me/Cure_Dovahkiin",
+            "des":"Cure_Dovahkiin"
+        },
+        {
+            "src": "bangumi.png",
+            "alt":"bangumi",
+            "href":"https://bgm.tv/user/shadowdreamer",
+            "des":"Cure_Dovahkiin"
+        },
+        {
+            "src": "github.png",
+            "alt":"github",
+            "href":"https://github.com/shadowdreamer/home/tree/master/src/producer",
+            "des":"this page"
+        }
+    ]
+}
