@@ -9,6 +9,7 @@ Vue.use(Vuetify, {
   iconfont: 'md',
   theme: {
     takane: '#a6126a',
+    primary: '#a6126a',
   },
   icons:{
     twitter:{
