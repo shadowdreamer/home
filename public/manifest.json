@@ -1,0 +1,14 @@
+{
+  "name": "CureDovahkiin's home page",
+  "short_name": "Dovahkiin",
+  "icons": [
+    {
+      "src": "./img/icons/favicon.ico",
+      "sizes": "32x32 48x48 128x128 256x256"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#a6126a",
+  "theme_color": "#a6126a"
+}

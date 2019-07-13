@@ -1,7 +1,16 @@
 <template>
   <v-dialog v-model="dialog" max-width="600" scrollable>
-    <v-card>
-      <v-card-text>dqweqw</v-card-text>
+    <v-card >
+      <v-card-title  class="title takane white--text" primary-title >
+        关于本站
+      </v-card-title>
+      <v-card-text class="takane--text" >
+        zaima？
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn flat color="takane"   @click="dialog=false">buzai cnm</v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

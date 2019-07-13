@@ -16,8 +16,8 @@
         </v-card-actions>
       </div>
       <div v-else-if="user">
-        <v-avatar size="50" color="takane">
-          <img :src="user.photoURL">
+        <v-avatar size="80" color="takane">
+          <img :src="user.photoURL.replace(/_normal/,'')">
         </v-avatar>
         <div class="my-3 title">{{user.displayName}}</div>
 
