@@ -9,7 +9,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn flat color="takane"   @click="dialog=false">buzai cnm</v-btn>
+        <v-btn flat color="takane"   @click.stop="dialog=false">buzai cnm</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
