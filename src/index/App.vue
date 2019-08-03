@@ -44,3 +44,23 @@ export default {
   },
 };
 </script>
+<style>
+  html{
+    overflow-y: auto;
+  }
+  * {
+  scrollbar-color: #bd237f #f2f2f2;
+  scrollbar-width: thin;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f2f2f2;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #bd237f;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+</style>

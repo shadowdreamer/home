@@ -11,6 +11,9 @@
               <a href="/producer">producer page</a>
             </p>
             <p>
+              <a href="https://mltd.dovahkiin.top/">MLTD DataBase</a>
+            </p>
+            <p>
               <a href="https://puzzle.dovahkiin.top/">神经衰弱小游戏</a>
             </p>
             <p>
